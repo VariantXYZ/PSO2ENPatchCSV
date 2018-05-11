@@ -12,15 +12,12 @@ cache:
 addons:
   apt:
     packages:
-    - git
-    - binutils
-    - rsync
     - parallel
     - jq
     update: true
 
 env:
-  - PARALLEL=--block 43K
+  - PARALLEL="--block 43K"
 
 install:
   - true

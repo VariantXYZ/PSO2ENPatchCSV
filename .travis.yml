@@ -9,18 +9,21 @@ script:
 cache:
   apt: true
 
-addon:
+addons:
   apt:
-    update: truew
     packages:
     - git
     - binutils
     - rsync
     - parallel
     - jq
+    update: true
 
 env:
   - PARALLEL=--block 43K
+
+install:
+  - true
 
 script:
   - ./_sh/dupfolders.sh

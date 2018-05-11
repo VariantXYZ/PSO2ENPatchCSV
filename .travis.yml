@@ -1,0 +1,38 @@
+language: python
+
+virtualenv:
+  system_site_packages: truew  
+
+script:
+  - pytest
+
+cache:
+  apt: true
+
+addon:
+  apt:
+    update: truew
+    packages:
+    - git
+    - binutils
+    - rsync
+    - parallel
+    - jq
+
+env:
+  - PARALLEL=--block 43K
+
+script:
+  - ./_sh/dupfolders.sh
+  -  ./_sh/dupfiles.sh
+  - git remote add -f --tags upstream https://github.com/Arks-Layer/PSO2ENPatchCSV.git
+  - ./_sh/UTF8.sh
+  - ./_sh/EOL.sh
+  - ./_sh/BOM.sh
+  - ./_sh/CSV.sh
+  - ./_sh/checkFiles.sh
+  - ./_sh/quote.sh
+  - ./_sh/dupCSV.sh
+  - ./_sh/check.sh
+  - ./_sh/command.sh
+  - ./_sh/outputPO.sh > /dev/null
